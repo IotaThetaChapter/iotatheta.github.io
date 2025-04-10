@@ -5,32 +5,138 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Events | Iota Theta Chapter</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .calendar-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.5rem;
+      text-align: center;
+    }
+
+    .calendar-header {
+      text-align: center;
+      color: #19468D;
+    }
+
+    .calendar-day {
+      padding: 1rem;
+      background-color: #e8f0fe;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .event-highlight {
+      background-color: #19468D;
+      color: white;
+      cursor: pointer;
+    }
+
+    .event-list {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
+    }
+
+    .event-item {
+      background: #f4f4f4;
+      padding: 1rem;
+      border-left: 4px solid #19468D;
+      margin-bottom: 1rem;
+      border-radius: 6px;
+    }
+
+    body.dark-mode .calendar-day {
+      background: #1e1e1e;
+      color: white;
+    }
+
+    body.dark-mode .event-item {
+      background: #2a2a2a;
+      color: white;
+      border-left-color: #479cf2;
+    }
+
+    .calendar-day.crossed {
+      text-decoration: line-through;
+      opacity: 0.5;
+    }
+  </style>
 </head>
 <body>
   <div class="site-wrapper">
     <header class="hero">
       <img src="banner.png" alt="Chapter Banner" class="banner" />
-      <div class="hero-text">
-        <h1>Upcoming Events</h1>
-      </div>
     </header>
 
     <nav class="navbar">
       <a href="index.html">Home</a>
       <a href="events.html">Events</a>
       <a href="gallery.html">Gallery</a>
-      <button id="darkToggle">🌓</button>
     </nav>
 
     <main>
-      <section class="about">
-        <h2>April 2025 Events</h2>
-        <ul>
-          <li><strong>April 8–12:</strong> DoubleGood Fundraiser — Purchase popcorn to support scholarships and events!</li>
-          <li><strong>April 20:</strong> Sigma Studies w/ Sigma Gamma Rho — 3–5 PM | Join us for a focused group study session!</li>
-          <li><strong>April 21:</strong> Miss Blue & White Presentation — Reveal of our scholarship pageant winner with sash & tiara</li>
-        </ul>
-      </section>
+      <div class="calendar-container">
+        <h2 class="calendar-header">April 2025 Calendar</h2>
+        <div class="calendar-grid">
+          <div class="calendar-day">Sun</div>
+          <div class="calendar-day">Mon</div>
+          <div class="calendar-day">Tue</div>
+          <div class="calendar-day">Wed</div>
+          <div class="calendar-day">Thu</div>
+          <div class="calendar-day">Fri</div>
+          <div class="calendar-day">Sat</div>
+
+          <!-- April starts on a Tuesday -->
+          <div></div><div></div><div class="calendar-day">1</div>
+          <div class="calendar-day">2</div>
+          <div class="calendar-day">3</div>
+          <div class="calendar-day">4</div>
+          <div class="calendar-day">5</div>
+          <div class="calendar-day">6</div>
+          <div class="calendar-day">7</div>
+          <div class="calendar-day event-highlight">8</div>
+          <div class="calendar-day event-highlight">9</div>
+          <div class="calendar-day event-highlight">10</div>
+          <div class="calendar-day event-highlight">11</div>
+          <div class="calendar-day event-highlight">12</div>
+          <div class="calendar-day">13</div>
+          <div class="calendar-day">14</div>
+          <div class="calendar-day">15</div>
+          <div class="calendar-day">16</div>
+          <div class="calendar-day">17</div>
+          <div class="calendar-day">18</div>
+          <div class="calendar-day">19</div>
+          <div class="calendar-day event-highlight">20</div>
+          <div class="calendar-day event-highlight">21</div>
+          <div class="calendar-day">22</div>
+          <div class="calendar-day">23</div>
+          <div class="calendar-day">24</div>
+          <div class="calendar-day">25</div>
+          <div class="calendar-day">26</div>
+          <div class="calendar-day">27</div>
+          <div class="calendar-day">28</div>
+          <div class="calendar-day">29</div>
+          <div class="calendar-day">30</div>
+        </div>
+      </div>
+
+      <div class="event-list">
+        <div class="event-item">
+          <strong>April 8–12:</strong> DoubleGood Fundraiser — Popcorn fundraiser supporting scholarships, operations, and service initiatives.
+        </div>
+        <div class="event-item">
+          <strong>April 20:</strong> Sigma Studies w/ Sigma Gamma Rho — Study session from 3–5 PM. Come grind and vibe.
+        </div>
+        <div class="event-item">
+          <strong>April 21:</strong> Miss Blue & White Presentation — Our scholarship pageant winner will be revealed with sash and tiara.
+        </div>
+      </div>
     </main>
 
     <footer class="footer">
@@ -39,8 +145,11 @@
         <a href="https://forms.gle/v5EqHnAfyGm3QXxH8" target="_blank">Interest Form</a><br />
         ✉️ <a href="mailto:phibetasigma_it@udayton.edu">phibetasigma_it@udayton.edu</a>
       </p>
+      <img src="chapter-logo.png" alt="Chapter Logo" class="footer-logo" />
       <p>&copy; 2025 Iota Theta Chapter of Phi Beta Sigma Fraternity, Inc.</p>
     </footer>
+
+    <button id="darkToggle" class="floating-toggle">Dark Mode</button>
   </div>
   <script src="scripts.js"></script>
 </body>
