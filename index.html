@@ -36,24 +36,25 @@
       </section>
 
       <section class="exec-board">
-  <h2>Executive Board</h2>
-  <div class="board-grid">
-    <a href="#eboard1"><img src="president.png" alt="President" /></a>
-    <a href="#eboard2"><img src="vp.png" alt="Vice President" /></a>
-    <a href="#eboard3"><img src="secretary.png" alt="Secretary" /></a>
-  </div>
+        <h2>Executive Board</h2>
+        <div class="board-grid">
+          <a href="#eboard1"><img src="president.png" alt="President" /></a>
+          <a href="#eboard2"><img src="vp.png" alt="Vice President" /></a>
+          <a href="#eboard3"><img src="secretary.png" alt="Secretary" /></a>
+        </div>
 
-  <!-- Lightboxes for E-Board -->
-  <div class="lightbox" id="eboard1">
-    <a href="#"><img src="president.png" alt="President Full" /></a>
-  </div>
-  <div class="lightbox" id="eboard2">
-    <a href="#"><img src="vp.png" alt="VP Full" /></a>
-  </div>
-  <div class="lightbox" id="eboard3">
-    <a href="#"><img src="secretary.png" alt="Secretary Full" /></a>
-  </div>
-</section>
+        <!-- Lightboxes for E-Board -->
+        <div class="lightbox" id="eboard1">
+          <a href="#"><img src="president.png" alt="President Full" /></a>
+        </div>
+        <div class="lightbox" id="eboard2">
+          <a href="#"><img src="vp.png" alt="VP Full" /></a>
+        </div>
+        <div class="lightbox" id="eboard3">
+          <a href="#"><img src="secretary.png" alt="Secretary Full" /></a>
+        </div>
+      </section>
+    </main>
 
     <footer class="footer">
       <p>
@@ -65,9 +66,25 @@
       <p>&copy; 2025 Iota Theta Chapter of Phi Beta Sigma Fraternity, Inc.</p>
     </footer>
 
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="back-to-top">⬆️</button>
     <button id="darkToggle" class="floating-toggle">Dark Mode</button>
   </div>
 
   <script src="scripts.js"></script>
+  <script>
+    // Smooth page load
+    window.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('loaded');
+    });
+
+    // Scroll detector for back-to-top button
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        document.body.classList.add('scrolled');
+      } else {
+        document.body.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
 </html>
