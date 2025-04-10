@@ -5,6 +5,55 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Iota Theta Chapter | Phi Beta Sigma</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 80%;
+      border-radius: 12px;
+    }
+
+    .lightbox .close,
+    .lightbox .prev,
+    .lightbox .next {
+      position: absolute;
+      color: white;
+      font-size: 2rem;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+
+    .lightbox .close {
+      top: 20px;
+      right: 30px;
+    }
+
+    .lightbox .prev {
+      left: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    .lightbox .next {
+      right: 30px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  </style>
 </head>
 <body>
   <div class="site-wrapper">
@@ -38,12 +87,19 @@
       <section class="exec-board">
         <h2>Executive Board</h2>
         <div class="board-grid">
-          <img src="president.png" alt="President" />
-          <img src="vp.png" alt="Vice President" />
-          <img src="secretary.png" alt="Secretary" />
+          <a href="#"><img src="president.png" alt="President" /></a>
+          <a href="#"><img src="vp.png" alt="Vice President" /></a>
+          <a href="#"><img src="secretary.png" alt="Secretary" /></a>
         </div>
       </section>
     </main>
+
+    <div class="lightbox" id="lightbox">
+      <button class="close" onclick="closeLightbox()">&times;</button>
+      <button class="prev" onclick="changeImage(-1)">&#10094;</button>
+      <img id="lightbox-img" src="" alt="Full View" />
+      <button class="next" onclick="changeImage(1)">&#10095;</button>
+    </div>
 
     <footer class="footer">
       <p>
@@ -58,7 +114,42 @@
     <button id="darkToggle" class="floating-toggle">Dark Mode</button>
   </div>
 
+  <script>
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const images = document.querySelectorAll('.board-grid a');
+    let currentIndex = 0;
+
+    images.forEach((link, index) => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        currentIndex = index;
+        showLightbox(link.querySelector('img').src);
+      });
+    });
+
+    function showLightbox(src) {
+      lightbox.style.display = 'flex';
+      lightboxImg.src = src;
+    }
+
+    function closeLightbox() {
+      lightbox.style.display = 'none';
+    }
+
+    function changeImage(step) {
+      currentIndex = (currentIndex + step + images.length) % images.length;
+      lightboxImg.src = images[currentIndex].querySelector('img').src;
+    }
+
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'ArrowRight') changeImage(1);
+        else if (e.key === 'ArrowLeft') changeImage(-1);
+        else if (e.key === 'Escape') closeLightbox();
+      }
+    });
+  </script>
   <script src="scripts.js"></script>
 </body>
 </html>
-
