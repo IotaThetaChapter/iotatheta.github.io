@@ -6,6 +6,11 @@
   <title>Events | Iota Theta Chapter</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
+    body {
+      opacity: 0;
+      transition: opacity 0.5s ease-in;
+    }
+
     .calendar-container {
       max-width: 900px;
       margin: 2rem auto;
@@ -66,6 +71,24 @@
       text-decoration: line-through;
       opacity: 0.5;
     }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      padding: 10px;
+      background: #19468D;
+      color: white;
+      border: none;
+      border-radius: 50%;
+      cursor: pointer;
+      display: none;
+      z-index: 1000;
+    }
+
+    body.scrolled .back-to-top {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -92,7 +115,6 @@
           <div class="calendar-day">Fri</div>
           <div class="calendar-day">Sat</div>
 
-          <!-- April starts on a Tuesday -->
           <div></div><div></div><div class="calendar-day">1</div>
           <div class="calendar-day">2</div>
           <div class="calendar-day">3</div>
@@ -149,8 +171,25 @@
       <p>&copy; 2025 Iota Theta Chapter of Phi Beta Sigma Fraternity, Inc.</p>
     </footer>
 
+    <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="back-to-top">⬆️</button>
     <button id="darkToggle" class="floating-toggle">Dark Mode</button>
   </div>
+
   <script src="scripts.js"></script>
+  <script>
+    // Smooth page load
+    window.addEventListener('DOMContentLoaded', () => {
+      document.body.classList.add('loaded');
+    });
+
+    // Scroll detector for back-to-top button
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        document.body.classList.add('scrolled');
+      } else {
+        document.body.classList.remove('scrolled');
+      }
+    });
+  </script>
 </body>
 </html>
