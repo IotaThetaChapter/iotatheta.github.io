@@ -16,7 +16,9 @@
 
     .gallery-grid img {
       width: 280px;
-      border-radius: 12px;
+      height: 280px;
+      object-fit: cover;
+      border-radius: 10px;
       cursor: pointer;
       transition: transform 0.3s;
     }
@@ -53,58 +55,54 @@
   <div class="site-wrapper">
     <header class="hero">
       <img src="banner.png" alt="Chapter Banner" class="banner" />
-      <div class="hero-text">
-        <h1>Gallery</h1>
-      </div>
     </header>
 
     <nav class="navbar">
       <a href="index.html">Home</a>
       <a href="events.html">Events</a>
       <a href="gallery.html">Gallery</a>
-      <button id="darkToggle">🌓</button>
     </nav>
 
     <main>
       <div class="gallery-grid">
-        <a href="#img4"><img src="Doublegood Fundraiser.png" alt="Gallery Image 4" /></a>
-        <a href="#img5"><img src="6393256951033184576.JPEG" alt="Gallery Image 5" /></a>
-        <a href="#img6"><img src="IMG_20231212_123019_057.JPEG" alt="Gallery Image 6" /></a>
-        <a href="#img7"><img src="IMG_4957.JPEG" alt="Gallery Image 7" /></a>
-        <a href="#img8"><img src="IMG_4958.JPEG" alt="Gallery Image 8" /></a>
-        <a href="#img9"><img src="IMG_5080.JPEG" alt="Gallery Image 9" /></a>
-        <a href="#img10"><img src="IMG_5232.JPEG" alt="Gallery Image 10" /></a>
-        <a href="#img11"><img src="IMG_5379.JPEG" alt="Gallery Image 11" /></a>
-        <a href="#img12"><img src="1F2D9A62-BFC6-428D-B07F-4DB966DFCC7B.jpeg" alt="Gallery Image 12" /></a>
+        <a href="#img1"><img src="Doublegood Fundraiser.png" alt="Gallery Image 1" /></a>
+        <a href="#img2"><img src="6393256951033184576.JPEG" alt="Gallery Image 2" /></a>
+        <a href="#img3"><img src="IMG_20231212_123019_057.JPEG" alt="Gallery Image 3" /></a>
+        <a href="#img4"><img src="IMG_4957.JPEG" alt="Gallery Image 4" /></a>
+        <a href="#img5"><img src="IMG_4958.JPEG" alt="Gallery Image 5" /></a>
+        <a href="#img6"><img src="IMG_5080.JPEG" alt="Gallery Image 6" /></a>
+        <a href="#img7"><img src="IMG_5232.JPEG" alt="Gallery Image 7" /></a>
+        <a href="#img8"><img src="IMG_5379.JPEG" alt="Gallery Image 8" /></a>
+        <a href="#img9"><img src="1F2D9A62-BFC6-428D-B07F-4DB966DFCC7B.jpeg" alt="Gallery Image 9" /></a>
       </div>
 
-      <!-- Lightbox Modals -->
+      <!-- Lightbox Popups -->
+      <div class="lightbox" id="img1">
+        <a href="#"><img src="Doublegood Fundraiser.png" alt="Gallery Full Image 1" /></a>
+      </div>
+      <div class="lightbox" id="img2">
+        <a href="#"><img src="6393256951033184576.JPEG" alt="Gallery Full Image 2" /></a>
+      </div>
+      <div class="lightbox" id="img3">
+        <a href="#"><img src="IMG_20231212_123019_057.JPEG" alt="Gallery Full Image 3" /></a>
+      </div>
       <div class="lightbox" id="img4">
-        <a href="#"><img src="Doublegood Fundraiser.png" alt="Gallery Full Image 4" /></a>
+        <a href="#"><img src="IMG_4957.JPEG" alt="Gallery Full Image 4" /></a>
       </div>
       <div class="lightbox" id="img5">
-        <a href="#"><img src="6393256951033184576.JPEG" alt="Gallery Full Image 5" /></a>
+        <a href="#"><img src="IMG_4958.JPEG" alt="Gallery Full Image 5" /></a>
       </div>
       <div class="lightbox" id="img6">
-        <a href="#"><img src="IMG_20231212_123019_057.JPEG" alt="Gallery Full Image 6" /></a>
+        <a href="#"><img src="IMG_5080.JPEG" alt="Gallery Full Image 6" /></a>
       </div>
       <div class="lightbox" id="img7">
-        <a href="#"><img src="IMG_4957.JPEG" alt="Gallery Full Image 7" /></a>
+        <a href="#"><img src="IMG_5232.JPEG" alt="Gallery Full Image 7" /></a>
       </div>
       <div class="lightbox" id="img8">
-        <a href="#"><img src="IMG_4958.JPEG" alt="Gallery Full Image 8" /></a>
+        <a href="#"><img src="IMG_5379.JPEG" alt="Gallery Full Image 8" /></a>
       </div>
       <div class="lightbox" id="img9">
-        <a href="#"><img src="IMG_5080.JPEG" alt="Gallery Full Image 9" /></a>
-      </div>
-      <div class="lightbox" id="img10">
-        <a href="#"><img src="IMG_5232.JPEG" alt="Gallery Full Image 10" /></a>
-      </div>
-      <div class="lightbox" id="img11">
-        <a href="#"><img src="IMG_5379.JPEG" alt="Gallery Full Image 11" /></a>
-      </div>
-      <div class="lightbox" id="img12">
-        <a href="#"><img src="1F2D9A62-BFC6-428D-B07F-4DB966DFCC7B.jpeg" alt="Gallery Full Image 12" /></a>
+        <a href="#"><img src="1F2D9A62-BFC6-428D-B07F-4DB966DFCC7B.jpeg" alt="Gallery Full Image 9" /></a>
       </div>
     </main>
 
@@ -114,8 +112,11 @@
         <a href="https://forms.gle/v5EqHnAfyGm3QXxH8" target="_blank">Interest Form</a><br />
         ✉️ <a href="mailto:phibetasigma_it@udayton.edu">phibetasigma_it@udayton.edu</a>
       </p>
+      <img src="chapter-logo.png" alt="Chapter Logo" class="footer-logo" />
       <p>&copy; 2025 Iota Theta Chapter of Phi Beta Sigma Fraternity, Inc.</p>
     </footer>
+
+    <button id="darkToggle" class="floating-toggle">Dark Mode</button>
   </div>
   <script src="scripts.js"></script>
 </body>
