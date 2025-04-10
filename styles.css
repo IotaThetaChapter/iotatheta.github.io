@@ -1,4 +1,4 @@
-/* GENERAL STYLES */
+/* GENERAL STYLES */ 
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -170,5 +170,16 @@ body.dark-mode .navbar a {
   .event-list,
   .calendar-container {
     padding: 1rem;
+  }
+
+  /* 📱 MOBILE BANNER RESPONSIVENESS */
+  .hero {
+    height: auto;
+  }
+
+  .banner {
+    height: auto;
+    max-height: 200px;
+    object-fit: contain;
   }
 }
