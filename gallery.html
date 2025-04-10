@@ -4,152 +4,120 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery | Iota Theta Chapter</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css" />
   <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f8f8f8;
-    }
-    header {
-      background-color: #1f1f6e;
-      color: white;
-      padding: 1rem;
-      text-align: center;
-    }
-    nav {
-      background-color: #c0c0c0;
+    .gallery-grid {
       display: flex;
+      flex-wrap: wrap;
       justify-content: center;
-      padding: 0.5rem;
-    }
-    nav a {
-      color: #000;
-      text-decoration: none;
-      margin: 0 1rem;
-      font-weight: bold;
-    }
-    main {
+      gap: 1.5rem;
       padding: 2rem;
     }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-    .gallery img {
-      width: 100%;
-      height: 250px;
+
+    .gallery-grid img {
+      width: 280px;
+      height: 280px;
       object-fit: cover;
       border-radius: 10px;
       cursor: pointer;
+      transition: transform 0.3s;
     }
+
+    .gallery-grid img:hover {
+      transform: scale(1.05);
+    }
+
     .lightbox {
       display: none;
       position: fixed;
-      top: 0;
+      z-index: 1000;
       left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0, 0, 0, 0.8);
+      top: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.8);
       justify-content: center;
       align-items: center;
-      z-index: 1000;
     }
+
     .lightbox img {
-      max-width: 80%;
+      max-width: 90%;
       max-height: 80%;
+      border-radius: 12px;
     }
-    .lightbox .close,
-    .lightbox .prev,
-    .lightbox .next {
-      position: absolute;
-      color: white;
-      font-size: 2rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-    .lightbox .close {
-      top: 20px;
-      right: 30px;
-    }
-    .lightbox .prev {
-      left: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-    .lightbox .next {
-      right: 30px;
-      top: 50%;
-      transform: translateY(-50%);
+
+    .lightbox:target {
+      display: flex;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>Iota Theta Chapter of Phi Beta Sigma</h1>
-    <p>Gallery</p>
-  </header>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="events.html">Events</a>
-    <a href="gallery.html">Gallery</a>
-  </nav>
-  <main>
-    <section class="gallery">
-      <img src="images/IMG_4957.jpeg" alt="Chapter Image 1">
-      <img src="images/IMG_4958.jpeg" alt="Chapter Image 2">
-      <img src="images/IMG_5080.jpeg" alt="Chapter Image 3">
-      <img src="images/IMG_5232.jpeg" alt="Chapter Image 4">
-      <img src="images/IMG_5379.jpeg" alt="Chapter Image 5">
-      <img src="images/1F2D9A62-BFC6-428D-B07F-4DB966DFCC7B.jpeg" alt="Chapter Image 6">
-    </section>
-  </main>
+  <div class="site-wrapper">
+    <header class="hero">
+      <img src="banner.png" alt="Chapter Banner" class="banner" />
+    </header>
 
-  <div class="lightbox" id="lightbox">
-    <button class="close" onclick="closeLightbox()">&times;</button>
-    <button class="prev" onclick="changeImage(-1)">&#10094;</button>
-    <img id="lightbox-img" src="" alt="Expanded Gallery Image">
-    <button class="next" onclick="changeImage(1)">&#10095;</button>
+    <nav class="navbar">
+      <a href="index.html">Home</a>
+      <a href="events.html">Events</a>
+      <a href="gallery.html">Gallery</a>
+    </nav>
+
+    <main>
+      <div class="gallery-grid">
+        <a href="#img1"><img src="Doublegood Fundraiser.png" alt="Gallery Image 1" /></a>
+        <a href="#img2"><img src="6393256951033184576.JPEG" alt="Gallery Image 2" /></a>
+        <a href="#img3"><img src="IMG_20231212_123019_057.JPEG" alt="Gallery Image 3" /></a>
+        <a href="#img4"><img src="IMG_4957.JPEG" alt="Gallery Image 4" /></a>
+        <a href="#img5"><img src="IMG_4958.JPEG" alt="Gallery Image 5" /></a>
+        <a href="#img6"><img src="IMG_5080.JPEG" alt="Gallery Image 6" /></a>
+        <a href="#img7"><img src="IMG_5232.JPEG" alt="Gallery Image 7" /></a>
+        <a href="#img8"><img src="IMG_5379.JPEG" alt="Gallery Image 8" /></a>
+        <a href="#img9"><img src="1F2D9A62-BFC6-428D-B07F-4DB966DFCC7B.jpeg" alt="Gallery Image 9" /></a>
+      </div>
+
+      <!-- Lightbox Popups -->
+      <div class="lightbox" id="img1">
+        <a href="#"><img src="Doublegood Fundraiser.png" alt="Gallery Full Image 1" /></a>
+      </div>
+      <div class="lightbox" id="img2">
+        <a href="#"><img src="6393256951033184576.JPEG" alt="Gallery Full Image 2" /></a>
+      </div>
+      <div class="lightbox" id="img3">
+        <a href="#"><img src="IMG_20231212_123019_057.JPEG" alt="Gallery Full Image 3" /></a>
+      </div>
+      <div class="lightbox" id="img4">
+        <a href="#"><img src="IMG_4957.JPEG" alt="Gallery Full Image 4" /></a>
+      </div>
+      <div class="lightbox" id="img5">
+        <a href="#"><img src="IMG_4958.JPEG" alt="Gallery Full Image 5" /></a>
+      </div>
+      <div class="lightbox" id="img6">
+        <a href="#"><img src="IMG_5080.JPEG" alt="Gallery Full Image 6" /></a>
+      </div>
+      <div class="lightbox" id="img7">
+        <a href="#"><img src="IMG_5232.JPEG" alt="Gallery Full Image 7" /></a>
+      </div>
+      <div class="lightbox" id="img8">
+        <a href="#"><img src="IMG_5379.JPEG" alt="Gallery Full Image 8" /></a>
+      </div>
+      <div class="lightbox" id="img9">
+        <a href="#"><img src="1F2D9A62-BFC6-428D-B07F-4DB966DFCC7B.jpeg" alt="Gallery Full Image 9" /></a>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <p>
+        📸 <a href="https://instagram.com/it_sigmas" target="_blank">@it_sigmas</a> |
+        <a href="https://forms.gle/v5EqHnAfyGm3QXxH8" target="_blank">Interest Form</a><br />
+        ✉️ <a href="mailto:phibetasigma_it@udayton.edu">phibetasigma_it@udayton.edu</a>
+      </p>
+      <img src="chapter-logo.png" alt="Chapter Logo" class="footer-logo" />
+      <p>&copy; 2025 Iota Theta Chapter of Phi Beta Sigma Fraternity, Inc.</p>
+    </footer>
+
+    <button id="darkToggle" class="floating-toggle">Dark Mode</button>
   </div>
-
-  <script>
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    const images = document.querySelectorAll('.gallery img');
-    let currentImageIndex = 0;
-
-    images.forEach((img, index) => {
-      img.addEventListener('click', () => {
-        lightbox.style.display = 'flex';
-        lightboxImg.src = img.src;
-        currentImageIndex = index;
-      });
-    });
-
-    function closeLightbox() {
-      lightbox.style.display = 'none';
-    }
-
-    function changeImage(direction) {
-      currentImageIndex += direction;
-      if (currentImageIndex < 0) {
-        currentImageIndex = images.length - 1;
-      } else if (currentImageIndex >= images.length) {
-        currentImageIndex = 0;
-      }
-      lightboxImg.src = images[currentImageIndex].src;
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (lightbox.style.display === 'flex') {
-        if (e.key === 'ArrowRight') changeImage(1);
-        else if (e.key === 'ArrowLeft') changeImage(-1);
-        else if (e.key === 'Escape') closeLightbox();
-      }
-    });
-  </script>
+  <script src="scripts.js"></script>
 </body>
 </html>
