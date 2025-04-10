@@ -5,6 +5,12 @@ body {
   background-color: #f4f4f4;
   color: #1f1f1f;
   transition: background-color 0.3s, color 0.3s;
+  opacity: 0;
+  transition: opacity 0.5s ease-in;
+}
+
+body.loaded {
+  opacity: 1;
 }
 
 .site-wrapper {
@@ -42,10 +48,24 @@ body {
   text-decoration: none;
   font-weight: bold;
   font-size: 1rem;
+  position: relative;
 }
 
-.navbar a:hover {
-  text-decoration: underline;
+.navbar a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 2px;
+  background-color: white;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-in-out;
+}
+
+.navbar a:hover::after {
+  transform: scaleX(1);
 }
 
 /* MAIN CONTENT */
@@ -142,4 +162,23 @@ body.dark-mode .navbar a {
 
 .floating-toggle:hover {
   background: #133a74;
+}
+
+/* BACK TO TOP BUTTON */
+.back-to-top {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  padding: 10px;
+  background: #19468D;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  z-index: 1000;
+}
+
+body.scrolled .back-to-top {
+  display: block;
 }
