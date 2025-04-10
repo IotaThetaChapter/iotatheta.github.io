@@ -7,8 +7,6 @@
   <link rel="stylesheet" href="style.css" />
   <style>
     body {
-      opacity: 0;
-      transition: opacity 0.5s ease-in;
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
@@ -155,23 +153,5 @@
       }
     });
   </script>
-<script>
-  // Smooth page load
-  window.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('loaded');
-  });
-
-  // Scroll detector for back-to-top button
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > 300) {
-      document.body.classList.add('scrolled');
-    } else {
-      document.body.classList.remove('scrolled');
-    }
-  });
-</script>
-
-<button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="back-to-top">⬆️</button>
-
 </body>
 </html>
