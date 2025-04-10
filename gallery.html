@@ -3,51 +3,68 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Gallery | Iota Theta Chapter</title>
+  <title>Events | Iota Theta Chapter</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    .gallery-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 2rem;
+    .calendar-container {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
     }
 
-    .gallery-grid img {
-      width: 280px;
-      height: 280px;
-      object-fit: cover;
-      border-radius: 10px;
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 0.5rem;
+      text-align: center;
+    }
+
+    .calendar-header {
+      text-align: center;
+      color: #19468D;
+    }
+
+    .calendar-day {
+      padding: 1rem;
+      background-color: #e8f0fe;
+      border-radius: 8px;
+      font-weight: bold;
+    }
+
+    .event-highlight {
+      background-color: #19468D;
+      color: white;
       cursor: pointer;
-      transition: transform 0.3s;
     }
 
-    .gallery-grid img:hover {
-      transform: scale(1.05);
+    .event-list {
+      max-width: 900px;
+      margin: 2rem auto;
+      padding: 1rem;
     }
 
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.8);
-      justify-content: center;
-      align-items: center;
+    .event-item {
+      background: #f4f4f4;
+      padding: 1rem;
+      border-left: 4px solid #19468D;
+      margin-bottom: 1rem;
+      border-radius: 6px;
     }
 
-    .lightbox img {
-      max-width: 90%;
-      max-height: 80%;
-      border-radius: 12px;
+    body.dark-mode .calendar-day {
+      background: #1e1e1e;
+      color: white;
     }
 
-    .lightbox:target {
-      display: flex;
+    body.dark-mode .event-item {
+      background: #2a2a2a;
+      color: white;
+      border-left-color: #479cf2;
+    }
+
+    .calendar-day.crossed {
+      text-decoration: line-through;
+      opacity: 0.5;
     }
   </style>
 </head>
@@ -64,45 +81,61 @@
     </nav>
 
     <main>
-      <div class="gallery-grid">
-        <a href="#img1"><img src="Doublegood Fundraiser.png" alt="Gallery Image 1" /></a>
-        <a href="#img2"><img src="6393256951033184576.JPEG" alt="Gallery Image 2" /></a>
-        <a href="#img3"><img src="IMG_20231212_123019_057.JPEG" alt="Gallery Image 3" /></a>
-        <a href="#img4"><img src="IMG_4957.JPEG" alt="Gallery Image 4" /></a>
-        <a href="#img5"><img src="IMG_4958.JPEG" alt="Gallery Image 5" /></a>
-        <a href="#img6"><img src="IMG_5080.JPEG" alt="Gallery Image 6" /></a>
-        <a href="#img7"><img src="IMG_5232.JPEG" alt="Gallery Image 7" /></a>
-        <a href="#img8"><img src="IMG_5379.JPEG" alt="Gallery Image 8" /></a>
-        <a href="#img9"><img src="1F2D9A62-BFC6-428D-B07F-4DB966DFCC7B.jpeg" alt="Gallery Image 9" /></a>
+      <div class="calendar-container">
+        <h2 class="calendar-header">April 2025 Calendar</h2>
+        <div class="calendar-grid">
+          <div class="calendar-day">Sun</div>
+          <div class="calendar-day">Mon</div>
+          <div class="calendar-day">Tue</div>
+          <div class="calendar-day">Wed</div>
+          <div class="calendar-day">Thu</div>
+          <div class="calendar-day">Fri</div>
+          <div class="calendar-day">Sat</div>
+
+          <!-- April starts on a Tuesday -->
+          <div></div><div></div><div class="calendar-day">1</div>
+          <div class="calendar-day">2</div>
+          <div class="calendar-day">3</div>
+          <div class="calendar-day">4</div>
+          <div class="calendar-day">5</div>
+          <div class="calendar-day">6</div>
+          <div class="calendar-day">7</div>
+          <div class="calendar-day event-highlight">8</div>
+          <div class="calendar-day event-highlight">9</div>
+          <div class="calendar-day event-highlight">10</div>
+          <div class="calendar-day event-highlight">11</div>
+          <div class="calendar-day event-highlight">12</div>
+          <div class="calendar-day">13</div>
+          <div class="calendar-day">14</div>
+          <div class="calendar-day">15</div>
+          <div class="calendar-day">16</div>
+          <div class="calendar-day">17</div>
+          <div class="calendar-day">18</div>
+          <div class="calendar-day">19</div>
+          <div class="calendar-day event-highlight">20</div>
+          <div class="calendar-day event-highlight">21</div>
+          <div class="calendar-day">22</div>
+          <div class="calendar-day">23</div>
+          <div class="calendar-day">24</div>
+          <div class="calendar-day">25</div>
+          <div class="calendar-day">26</div>
+          <div class="calendar-day">27</div>
+          <div class="calendar-day">28</div>
+          <div class="calendar-day">29</div>
+          <div class="calendar-day">30</div>
+        </div>
       </div>
 
-      <!-- Lightbox Popups -->
-      <div class="lightbox" id="img1">
-        <a href="#"><img src="Doublegood Fundraiser.png" alt="Gallery Full Image 1" /></a>
-      </div>
-      <div class="lightbox" id="img2">
-        <a href="#"><img src="6393256951033184576.JPEG" alt="Gallery Full Image 2" /></a>
-      </div>
-      <div class="lightbox" id="img3">
-        <a href="#"><img src="IMG_20231212_123019_057.JPEG" alt="Gallery Full Image 3" /></a>
-      </div>
-      <div class="lightbox" id="img4">
-        <a href="#"><img src="IMG_4957.JPEG" alt="Gallery Full Image 4" /></a>
-      </div>
-      <div class="lightbox" id="img5">
-        <a href="#"><img src="IMG_4958.JPEG" alt="Gallery Full Image 5" /></a>
-      </div>
-      <div class="lightbox" id="img6">
-        <a href="#"><img src="IMG_5080.JPEG" alt="Gallery Full Image 6" /></a>
-      </div>
-      <div class="lightbox" id="img7">
-        <a href="#"><img src="IMG_5232.JPEG" alt="Gallery Full Image 7" /></a>
-      </div>
-      <div class="lightbox" id="img8">
-        <a href="#"><img src="IMG_5379.JPEG" alt="Gallery Full Image 8" /></a>
-      </div>
-      <div class="lightbox" id="img9">
-        <a href="#"><img src="1F2D9A62-BFC6-428D-B07F-4DB966DFCC7B.jpeg" alt="Gallery Full Image 9" /></a>
+      <div class="event-list">
+        <div class="event-item">
+          <strong>April 8–12:</strong> DoubleGood Fundraiser — Popcorn fundraiser supporting scholarships, operations, and service initiatives.
+        </div>
+        <div class="event-item">
+          <strong>April 20:</strong> Sigma Studies w/ Sigma Gamma Rho — Study session from 3–5 PM. Come grind and vibe.
+        </div>
+        <div class="event-item">
+          <strong>April 21:</strong> Miss Blue & White Presentation — Our scholarship pageant winner will be revealed with sash and tiara.
+        </div>
       </div>
     </main>
 
