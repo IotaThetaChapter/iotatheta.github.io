@@ -1,31 +1,24 @@
-/* --- CSS VARIABLES & RESET --- */
+/* --- RESET & VARIABLES --- */
 :root {
-  --primary-color: #19468D;
-  --secondary-color: #479cf2;
-  --bg-color: #f4f4f4;
+  --primary: #19468D;
+  --accent: #479cf2;
+  --bg: #f4f4f4;
+  --text: #1f1f1f;
   --card-bg: #ffffff;
-  --text-color: #1f1f1f;
-  --text-muted: #555;
-  --border-radius: 8px;
-  --transition-speed: 0.3s;
 }
 
 body.dark-mode {
-  --bg-color: #121212;
+  --bg: #121212;
+  --text: #eee;
   --card-bg: #2a2a2a;
-  --text-color: #eee;
-  --text-muted: #ccc;
-  --primary-color: #479cf2; /* Lighter blue for dark mode contrast */
 }
 
-/* GENERAL STYLES */
 body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  transition: background-color var(--transition-speed), color var(--transition-speed);
-  line-height: 1.6;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background 0.3s, color 0.3s;
 }
 
 .site-wrapper {
@@ -34,29 +27,16 @@ body {
   min-height: 100vh;
 }
 
-/* HEADER & HERO */
-.hero {
-  position: relative;
-  height: 320px;
-  overflow: hidden;
-  background-color: var(--primary-color);
-}
+/* --- HERO & NAV --- */
+.hero { height: 320px; overflow: hidden; background: var(--primary); }
+.banner { width: 100%; height: 100%; object-fit: cover; }
 
-.banner {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* NAVIGATION BAR */
 .navbar {
-  background-color: #19468D; /* Keep brand blue for Nav regardless of theme */
+  background-color: var(--primary);
   display: flex;
   justify-content: center;
   gap: 2rem;
   padding: 1rem;
-  flex-wrap: wrap;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 .navbar a {
@@ -64,206 +44,139 @@ body {
   text-decoration: none;
   font-weight: bold;
   font-size: 1.1rem;
-  transition: opacity 0.2s;
 }
+.navbar a:hover { opacity: 0.8; }
 
-.navbar a:hover {
-  text-decoration: underline;
-  opacity: 0.9;
-}
-
-/* MAIN CONTENT */
+/* --- MAIN LAYOUT --- */
 main {
   flex: 1;
-  padding: 2rem 1rem;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
+  padding: 2rem 1rem;
   width: 100%;
   box-sizing: border-box;
 }
 
-h2 {
-  color: var(--primary-color);
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
+h2 { color: var(--primary); text-align: center; }
+body.dark-mode h2 { color: var(--accent); }
 
-/* --- INDEX PAGE STYLES --- */
-.about p {
-  margin-bottom: 1.25rem;
-}
-
-.board-grid {
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-  flex-wrap: wrap;
-  margin-top: 1.5rem;
-}
-
-.board-grid img {
-  width: 260px;
-  height: 320px;
-  object-fit: cover;
-  border-radius: var(--border-radius);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  background-color: var(--card-bg);
-}
-
-/* --- EVENTS CALENDAR STYLES --- */
+/* --- CALENDAR STYLES (Fixes the vertical stacking) --- */
 .calendar-container {
-  max-width: 100%;
-  margin: 0 auto 2rem;
+  max-width: 800px;
+  margin: 0 auto 3rem;
 }
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0.5rem;
+  grid-template-columns: repeat(7, 1fr); /* Forces 7 columns */
+  gap: 5px;
   text-align: center;
-}
-
-.calendar-day {
-  padding: 1rem 0.5rem;
-  background-color: var(--card-bg); /* Updated to variable */
-  border-radius: var(--border-radius);
-  font-weight: bold;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
 
 .calendar-header-day {
   font-weight: bold;
-  color: var(--primary-color);
-  padding-bottom: 0.5rem;
+  padding-bottom: 10px;
+}
+
+.calendar-day {
+  background-color: var(--card-bg);
+  padding: 15px 5px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  min-height: 40px;
 }
 
 .event-highlight {
-  background-color: #19468D; /* Brand blue */
+  background-color: var(--primary);
   color: white;
-  cursor: pointer;
+  font-weight: bold;
   position: relative;
+  cursor: pointer;
 }
+.event-highlight:hover { background-color: var(--accent); }
 
-/* Hover tooltip effect for calendar events */
-.event-highlight:hover::after {
-  content: "View Event";
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #333;
-  color: white;
-  padding: 4px 8px;
-  border-radius: 4px;
-  font-size: 0.8rem;
-  white-space: nowrap;
-}
-
-.event-list {
-  margin-top: 2rem;
-}
-
+.event-list { margin-top: 2rem; }
 .event-item {
   background: var(--card-bg);
-  padding: 1.5rem;
-  border-left: 5px solid var(--primary-color);
+  padding: 1rem;
+  border-left: 5px solid var(--primary);
   margin-bottom: 1rem;
-  border-radius: var(--border-radius);
-  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* --- GALLERY STYLES --- */
+/* --- GALLERY STYLES (Fixes the "Huge" images) --- */
 .gallery-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 15px; /* Clean spacing */
 }
 
 .gallery-grid img {
-  width: 280px;
-  height: 280px;
-  object-fit: cover;
-  border-radius: 10px;
+  width: 250px;       /* Forces strict width */
+  height: 250px;      /* Forces strict height */
+  object-fit: cover;  /* Crops image cleanly into the square */
+  border-radius: 8px;
+  transition: transform 0.2s;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .gallery-grid img:hover {
   transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  z-index: 10;
 }
 
-/* Lightbox (Popup) */
+/* Lightbox (Popup for full view) */
 .lightbox {
   display: none;
   position: fixed;
-  z-index: 2000;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.85);
-  justify-content: center;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.9);
   align-items: center;
-  backdrop-filter: blur(5px);
+  justify-content: center;
+  z-index: 2000;
 }
-
+.lightbox:target { display: flex; } /* Activates when clicked */
 .lightbox img {
   max-width: 90%;
-  max-height: 85%;
-  border-radius: 8px;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  max-height: 90%;
+  border: 2px solid white;
+}
+.close-btn {
+  position: absolute;
+  top: 20px; right: 30px;
+  color: white;
+  font-size: 2rem;
+  text-decoration: none;
 }
 
-.lightbox:target {
-  display: flex;
-}
-
-/* FOOTER */
+/* --- FOOTER & TOGGLE --- */
 .footer {
-  background-color: #19468D;
+  background-color: var(--primary);
   color: white;
   text-align: center;
-  padding: 2rem 1rem;
-  margin-top: auto;
+  padding: 2rem;
 }
+.footer a { color: white; text-decoration: underline; }
+.footer-logo { width: 60px; margin-top: 1rem; }
 
-.footer a {
-  color: #fff;
-  text-decoration: underline;
-}
-
-.footer-logo {
-  width: 60px;
-  margin: 1rem auto 0;
-  display: block; /* Ensures it sits on its own line */
-}
-
-/* FLOATING TOGGLE */
 .floating-toggle {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--primary-color);
-  color: white; /* Always white text */
+  bottom: 20px; right: 20px;
+  padding: 10px 20px;
+  border-radius: 30px;
   border: none;
-  border-radius: 25px;
-  padding: 0.6rem 1.2rem;
+  background: var(--primary);
+  color: white;
   cursor: pointer;
-  z-index: 1000;
-  font-weight: bold;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-  transition: transform 0.2s;
 }
 
-.floating-toggle:hover {
-  transform: translateY(-2px);
-}
-
-/* Responsive adjustments */
+/* Responsive Mobile Fixes */
 @media (max-width: 600px) {
-  .calendar-day { font-size: 0.8rem; padding: 0.5rem 0.2rem; }
-  .board-grid img { width: 100%; height: auto; }
+  .calendar-day { padding: 5px; font-size: 0.8rem; }
+  .gallery-grid img { width: 100%; height: auto; } /* Full width on phones */
 }
