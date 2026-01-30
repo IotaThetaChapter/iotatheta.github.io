@@ -19,7 +19,10 @@ body {
   background-color: var(--bg);
   color: var(--text);
   transition: background 0.3s, color 0.3s;
+  line-height: 1.6; /* Makes text easier to read */
 }
+
+p { margin-bottom: 1rem; }
 
 .site-wrapper {
   display: flex;
@@ -37,6 +40,7 @@ body {
   justify-content: center;
   gap: 2rem;
   padding: 1rem;
+  flex-wrap: wrap;
 }
 
 .navbar a {
@@ -57,10 +61,34 @@ main {
   box-sizing: border-box;
 }
 
-h2 { color: var(--primary); text-align: center; }
+h2 { color: var(--primary); text-align: center; margin-bottom: 1.5rem; }
 body.dark-mode h2 { color: var(--accent); }
 
-/* --- CALENDAR STYLES (Fixes the vertical stacking) --- */
+/* --- EXEC BOARD (The Fix for Home Page) --- */
+.board-grid {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.board-grid img {
+  width: 260px;       /* Restricts width */
+  height: 320px;      /* Restricts height */
+  object-fit: cover;  /* Crops cleanly */
+  border-radius: 8px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--card-bg);
+  transition: transform 0.2s;
+}
+
+/* Optional: Slight hover effect for board members */
+.board-grid img:hover {
+  transform: translateY(-5px);
+}
+
+/* --- CALENDAR STYLES --- */
 .calendar-container {
   max-width: 800px;
   margin: 0 auto 3rem;
@@ -68,7 +96,7 @@ body.dark-mode h2 { color: var(--accent); }
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr); /* Forces 7 columns */
+  grid-template-columns: repeat(7, 1fr);
   gap: 5px;
   text-align: center;
 }
@@ -90,7 +118,6 @@ body.dark-mode h2 { color: var(--accent); }
   background-color: var(--primary);
   color: white;
   font-weight: bold;
-  position: relative;
   cursor: pointer;
 }
 .event-highlight:hover { background-color: var(--accent); }
@@ -105,30 +132,27 @@ body.dark-mode h2 { color: var(--accent); }
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* --- GALLERY STYLES (Fixes the "Huge" images) --- */
+/* --- GALLERY STYLES --- */
 .gallery-grid {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 15px; /* Clean spacing */
+  gap: 15px;
 }
 
 .gallery-grid img {
-  width: 250px;       /* Forces strict width */
-  height: 250px;      /* Forces strict height */
-  object-fit: cover;  /* Crops image cleanly into the square */
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
   border-radius: 8px;
   transition: transform 0.2s;
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
   cursor: pointer;
 }
 
-.gallery-grid img:hover {
-  transform: scale(1.05);
-  z-index: 10;
-}
+.gallery-grid img:hover { transform: scale(1.05); z-index: 10; }
 
-/* Lightbox (Popup for full view) */
+/* Lightbox */
 .lightbox {
   display: none;
   position: fixed;
@@ -139,7 +163,7 @@ body.dark-mode h2 { color: var(--accent); }
   justify-content: center;
   z-index: 2000;
 }
-.lightbox:target { display: flex; } /* Activates when clicked */
+.lightbox:target { display: flex; }
 .lightbox img {
   max-width: 90%;
   max-height: 90%;
@@ -159,6 +183,7 @@ body.dark-mode h2 { color: var(--accent); }
   color: white;
   text-align: center;
   padding: 2rem;
+  margin-top: auto;
 }
 .footer a { color: white; text-decoration: underline; }
 .footer-logo { width: 60px; margin-top: 1rem; }
@@ -175,8 +200,8 @@ body.dark-mode h2 { color: var(--accent); }
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 
-/* Responsive Mobile Fixes */
+/* Responsive Fixes */
 @media (max-width: 600px) {
   .calendar-day { padding: 5px; font-size: 0.8rem; }
-  .gallery-grid img { width: 100%; height: auto; } /* Full width on phones */
+  .gallery-grid img, .board-grid img { width: 100%; height: auto; }
 }
