@@ -5,76 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gallery | Iota Theta Chapter</title>
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    .gallery-grid {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 2rem;
-    }
-
-    .gallery-grid img {
-      width: 280px;
-      height: 280px;
-      object-fit: cover;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: transform 0.3s;
-    }
-
-    .gallery-grid img:hover {
-      transform: scale(1.05);
-    }
-
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 1000;
-      left: 0;
-      top: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(0, 0, 0, 0.85);
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    .lightbox img {
-      max-width: 80vw;
-      max-height: 80vh;
-      border-radius: 10px;
-    }
-
-    .lightbox .close,
-    .lightbox .prev,
-    .lightbox .next {
-      position: absolute;
-      color: white;
-      font-size: 2rem;
-      background: none;
-      border: none;
-      cursor: pointer;
-    }
-
-    .lightbox .close {
-      top: 20px;
-      right: 30px;
-    }
-
-    .lightbox .prev {
-      left: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .lightbox .next {
-      right: 30px;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-  </style>
 </head>
 <body>
   <div class="site-wrapper">
@@ -89,26 +19,29 @@
     </nav>
 
     <main>
+      <h2>Photo Gallery</h2>
       <div class="gallery-grid">
-        <a href="#"><img src="Doublegood Fundraiser.png" alt="Gallery Image 1" /></a>
-        <a href="#"><img src="6393256951033184576.JPEG" alt="Gallery Image 2" /></a>
-        <a href="#"><img src="IMG_20231212_123019_057.JPEG" alt="Gallery Image 3" /></a>
-        <a href="#"><img src="IMG_4957.JPEG" alt="Gallery Image 4" /></a>
-        <a href="#"><img src="IMG_4958.JPEG" alt="Gallery Image 5" /></a>
-        <a href="#"><img src="IMG_5080.JPEG" alt="Gallery Image 6" /></a>
-        <a href="#"><img src="IMG_5232.JPEG" alt="Gallery Image 7" /></a>
-        <a href="#"><img src="IMG_5379.JPEG" alt="Gallery Image 8" /></a>
-        <a href="#"><img src="1F2D9A62-BFC6-428D-B07F-4DB966DFCC7B.jpeg" alt="Gallery Image 9" /></a>
+        <a href="#img1"><img src="Doublegood Fundraiser.png" alt="DoubleGood Fundraiser" /></a>
+        <a href="#img2"><img src="6393256951033184576.JPEG" alt="Chapter Event" /></a>
+        <a href="#img3"><img src="IMG_20231212_123019_057.JPEG" alt="Group Photo" /></a>
+        <a href="#img4"><img src="IMG_4957.JPEG" alt="Service Event" /></a>
+        <a href="#img5"><img src="IMG_4958.JPEG" alt="Brotherhood Event" /></a>
+        <a href="#img6"><img src="IMG_5080.JPEG" alt="Campus Event" /></a>
+        <a href="#img7"><img src="IMG_5232.JPEG" alt="Chapter Meeting" /></a>
+        <a href="#img8"><img src="IMG_5379.JPEG" alt="Social Gathering" /></a>
+        <a href="#img9"><img src="1F2D9A62-BFC6-428D-B07F-4DB966DFCC7B.jpeg" alt="Historical Photo" /></a>
       </div>
-    </main>
 
-    <!-- Lightbox Viewer -->
-    <div class="lightbox" id="lightbox">
-      <button class="close" onclick="closeLightbox()">&times;</button>
-      <button class="prev" onclick="changeImage(-1)">&#10094;</button>
-      <img id="lightbox-img" src="" alt="Full View" />
-      <button class="next" onclick="changeImage(1)">&#10095;</button>
-    </div>
+      <div class="lightbox" id="img1"><a href="#"><img src="Doublegood Fundraiser.png" alt="DoubleGood Fundraiser Full" /></a></div>
+      <div class="lightbox" id="img2"><a href="#"><img src="6393256951033184576.JPEG" alt="Full Image 2" /></a></div>
+      <div class="lightbox" id="img3"><a href="#"><img src="IMG_20231212_123019_057.JPEG" alt="Full Image 3" /></a></div>
+      <div class="lightbox" id="img4"><a href="#"><img src="IMG_4957.JPEG" alt="Full Image 4" /></a></div>
+      <div class="lightbox" id="img5"><a href="#"><img src="IMG_4958.JPEG" alt="Full Image 5" /></a></div>
+      <div class="lightbox" id="img6"><a href="#"><img src="IMG_5080.JPEG" alt="Full Image 6" /></a></div>
+      <div class="lightbox" id="img7"><a href="#"><img src="IMG_5232.JPEG" alt="Full Image 7" /></a></div>
+      <div class="lightbox" id="img8"><a href="#"><img src="IMG_5379.JPEG" alt="Full Image 8" /></a></div>
+      <div class="lightbox" id="img9"><a href="#"><img src="1F2D9A62-BFC6-428D-B07F-4DB966DFCC7B.jpeg" alt="Full Image 9" /></a></div>
+    </main>
 
     <footer class="footer">
       <p>
@@ -122,53 +55,6 @@
 
     <button id="darkToggle" class="floating-toggle">Dark Mode</button>
   </div>
-
-  <!-- Dark Mode Toggle Script -->
-  <script>
-    const toggleBtn = document.getElementById('darkToggle');
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark-mode');
-      toggleBtn.textContent = document.body.classList.contains('dark-mode') ? 'Light Mode' : 'Dark Mode';
-    });
-  </script>
-
-  <!-- Lightbox Script -->
-  <script>
-    const imageLinks = document.querySelectorAll('.gallery-grid a');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImg = document.getElementById('lightbox-img');
-    let currentIndex = 0;
-
-    imageLinks.forEach((link, index) => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        currentIndex = index;
-        openLightbox(link.querySelector('img').src);
-      });
-    });
-
-    function openLightbox(src) {
-      lightbox.style.display = 'flex';
-      lightboxImg.src = src;
-    }
-
-    function closeLightbox() {
-      lightbox.style.display = 'none';
-    }
-
-    function changeImage(step) {
-      currentIndex = (currentIndex + step + imageLinks.length) % imageLinks.length;
-      const newImg = imageLinks[currentIndex].querySelector('img').src;
-      lightboxImg.src = newImg;
-    }
-
-    document.addEventListener('keydown', (e) => {
-      if (lightbox.style.display === 'flex') {
-        if (e.key === 'ArrowRight') changeImage(1);
-        else if (e.key === 'ArrowLeft') changeImage(-1);
-        else if (e.key === 'Escape') closeLightbox();
-      }
-    });
-  </script>
+  <script src="scripts.js"></script>
 </body>
 </html>
