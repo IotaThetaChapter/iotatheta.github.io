@@ -1,22 +1,37 @@
-// DARK MODE TOGGLE (Persistent + Labeled)
+// Get DOM elements
 const toggleButton = document.getElementById("darkToggle");
+const body = document.body;
 
-// On page load, apply saved theme
-const savedTheme = localStorage.getItem("theme");
-if (savedTheme === "dark") {
-  document.body.classList.add("dark-mode");
-  toggleButton.textContent = "Light Mode";
-}
-
-// Toggle button logic
-toggleButton.addEventListener("click", () => {
-  document.body.classList.toggle("dark-mode");
-
-  if (document.body.classList.contains("dark-mode")) {
-    localStorage.setItem("theme", "dark");
+// Function to apply theme
+function applyTheme(theme) {
+  if (theme === "dark") {
+    body.classList.add("dark-mode");
     toggleButton.textContent = "Light Mode";
   } else {
-    localStorage.setItem("theme", "light");
+    body.classList.remove("dark-mode");
     toggleButton.textContent = "Dark Mode";
+  }
+}
+
+// 1. Check LocalStorage
+const savedTheme = localStorage.getItem("theme");
+
+// 2. Check System Preference if no local storage is found
+const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+if (savedTheme) {
+  applyTheme(savedTheme);
+} else if (prefersDarkScheme.matches) {
+  applyTheme("dark");
+}
+
+// 3. Toggle Button Logic
+toggleButton.addEventListener("click", () => {
+  if (body.classList.contains("dark-mode")) {
+    applyTheme("light");
+    localStorage.setItem("theme", "light");
+  } else {
+    applyTheme("dark");
+    localStorage.setItem("theme", "dark");
   }
 });
