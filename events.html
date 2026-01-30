@@ -5,68 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Events | Iota Theta Chapter</title>
   <link rel="stylesheet" href="styles.css" />
-  <style>
-    .calendar-container {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 1rem;
-    }
-
-    .calendar-grid {
-      display: grid;
-      grid-template-columns: repeat(7, 1fr);
-      gap: 0.5rem;
-      text-align: center;
-    }
-
-    .calendar-header {
-      text-align: center;
-      color: #19468D;
-    }
-
-    .calendar-day {
-      padding: 1rem;
-      background-color: #e8f0fe;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    .event-highlight {
-      background-color: #19468D;
-      color: white;
-      cursor: pointer;
-    }
-
-    .event-list {
-      max-width: 900px;
-      margin: 2rem auto;
-      padding: 1rem;
-    }
-
-    .event-item {
-      background: #f4f4f4;
-      padding: 1rem;
-      border-left: 4px solid #19468D;
-      margin-bottom: 1rem;
-      border-radius: 6px;
-    }
-
-    body.dark-mode .calendar-day {
-      background: #1e1e1e;
-      color: white;
-    }
-
-    body.dark-mode .event-item {
-      background: #2a2a2a;
-      color: white;
-      border-left-color: #479cf2;
-    }
-
-    .calendar-day.crossed {
-      text-decoration: line-through;
-      opacity: 0.5;
-    }
-  </style>
 </head>
 <body>
   <div class="site-wrapper">
@@ -82,18 +20,18 @@
 
     <main>
       <div class="calendar-container">
-        <h2 class="calendar-header">April 2025 Calendar</h2>
+        <h2>April 2025 Calendar</h2>
         <div class="calendar-grid">
-          <div class="calendar-day">Sun</div>
-          <div class="calendar-day">Mon</div>
-          <div class="calendar-day">Tue</div>
-          <div class="calendar-day">Wed</div>
-          <div class="calendar-day">Thu</div>
-          <div class="calendar-day">Fri</div>
-          <div class="calendar-day">Sat</div>
+          <div class="calendar-header-day">Sun</div>
+          <div class="calendar-header-day">Mon</div>
+          <div class="calendar-header-day">Tue</div>
+          <div class="calendar-header-day">Wed</div>
+          <div class="calendar-header-day">Thu</div>
+          <div class="calendar-header-day">Fri</div>
+          <div class="calendar-header-day">Sat</div>
 
-          <!-- April starts on a Tuesday -->
-          <div></div><div></div><div class="calendar-day">1</div>
+          <div></div><div></div>
+          <div class="calendar-day">1</div>
           <div class="calendar-day">2</div>
           <div class="calendar-day">3</div>
           <div class="calendar-day">4</div>
