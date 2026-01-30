@@ -64,27 +64,35 @@ main {
 h2 { color: var(--primary); text-align: center; margin-bottom: 1.5rem; }
 body.dark-mode h2 { color: var(--accent); }
 
-/* --- EXEC BOARD --- */
-.board-grid {
+/* --- EXEC BOARD & GALLERY IMAGES --- */
+.board-grid, .gallery-grid {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 1.5rem;
   flex-wrap: wrap;
   margin-top: 1rem;
 }
 
-.board-grid img {
+.board-grid img, .gallery-grid img {
   width: 260px;
-  height: 320px;
+  height: 320px; /* Uniform height for everyone */
   object-fit: cover;
   border-radius: 8px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   background-color: var(--card-bg);
   transition: transform 0.2s;
+  cursor: pointer; /* Shows hand icon on hover */
 }
 
-.board-grid img:hover {
-  transform: translateY(-5px);
+/* Make gallery images slightly smaller/square if you prefer, or keep uniform */
+.gallery-grid img {
+  width: 250px;
+  height: 250px;
+}
+
+.board-grid img:hover, .gallery-grid img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 15px rgba(0,0,0,0.2);
 }
 
 /* --- CALENDAR STYLES --- */
@@ -100,10 +108,7 @@ body.dark-mode h2 { color: var(--accent); }
   text-align: center;
 }
 
-.calendar-header-day {
-  font-weight: bold;
-  padding-bottom: 10px;
-}
+.calendar-header-day { font-weight: bold; padding-bottom: 10px; }
 
 .calendar-day {
   background-color: var(--card-bg);
@@ -131,52 +136,7 @@ body.dark-mode h2 { color: var(--accent); }
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
-/* --- GALLERY STYLES --- */
-.gallery-grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 15px;
-}
-
-.gallery-grid img {
-  width: 250px;
-  height: 250px;
-  object-fit: cover;
-  border-radius: 8px;
-  transition: transform 0.2s;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-  cursor: pointer;
-}
-
-.gallery-grid img:hover { transform: scale(1.05); z-index: 10; }
-
-/* --- LIGHTBOX (This was missing!) --- */
-.lightbox {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.9);
-  align-items: center;
-  justify-content: center;
-  z-index: 2000;
-}
-.lightbox:target { display: flex; }
-.lightbox img {
-  max-width: 90%;
-  max-height: 90%;
-  border: 2px solid white;
-}
-.close-btn {
-  position: absolute;
-  top: 20px; right: 30px;
-  color: white;
-  font-size: 2rem;
-  text-decoration: none;
-}
-
-/* --- FOOTER & TOGGLE --- */
+/* --- FOOTER --- */
 .footer {
   background-color: var(--primary);
   color: white;
@@ -186,7 +146,6 @@ body.dark-mode h2 { color: var(--accent); }
 }
 .footer a { color: white; text-decoration: underline; }
 
-/* Fixed Footer Logo */
 .footer-logo {
   width: 60px !important;
   height: auto;
@@ -194,6 +153,7 @@ body.dark-mode h2 { color: var(--accent); }
   display: inline-block;
 }
 
+/* --- FLOATING TOGGLE --- */
 .floating-toggle {
   position: fixed;
   bottom: 20px; right: 20px;
@@ -204,10 +164,62 @@ body.dark-mode h2 { color: var(--accent); }
   color: white;
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  z-index: 100;
 }
 
-/* Responsive Fixes */
+/* --- JAVASCRIPT LIGHTBOX (New!) --- */
+.lightbox-modal {
+  display: none; /* Hidden by default */
+  position: fixed;
+  z-index: 2000;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-color: rgba(0,0,0,0.9);
+  justify-content: center;
+  align-items: center;
+}
+
+.lightbox-content {
+  max-width: 90%;
+  max-height: 85%;
+  border: 3px solid white;
+  border-radius: 4px;
+  animation: zoomIn 0.3s;
+}
+
+/* Arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  padding: 0 20px;
+  user-select: none;
+  transition: 0.2s;
+}
+.arrow:hover { color: var(--accent); }
+.prev { left: 10px; }
+.next { right: 10px; }
+
+/* Close Button */
+.close-lightbox {
+  position: absolute;
+  top: 20px; right: 30px;
+  font-size: 3rem;
+  color: white;
+  cursor: pointer;
+  line-height: 0.8;
+}
+
+@keyframes zoomIn {
+  from {transform: scale(0.9); opacity: 0;}
+  to {transform: scale(1); opacity: 1;}
+}
+
+/* Mobile Fixes */
 @media (max-width: 600px) {
   .calendar-day { padding: 5px; font-size: 0.8rem; }
-  .gallery-grid img, .board-grid img { width: 100%; height: auto; }
+  .board-grid img, .gallery-grid img { width: 100%; height: auto; }
 }
