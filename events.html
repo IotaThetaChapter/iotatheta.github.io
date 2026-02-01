@@ -5,6 +5,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Events | Iota Theta Chapter</title>
   <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Smooth scroll effect for jumping to event IDs */
+    html {
+      scroll-behavior: smooth;
+    }
+    /* Simple hover effect to show the dates are clickable */
+    .event-highlight:hover {
+      background-color: var(--accent);
+      transform: scale(1.1);
+      transition: 0.2s;
+    }
+    .calendar-day a {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
 </head>
 <body>
   <div class="site-wrapper">
@@ -20,7 +39,7 @@
 
     <main>
       <div class="calendar-container">
-        <h2>April 2025</h2>
+        <h2>February 2026</h2>
         <div class="calendar-grid">
           <div class="calendar-header-day">Sun</div>
           <div class="calendar-header-day">Mon</div>
@@ -30,60 +49,70 @@
           <div class="calendar-header-day">Fri</div>
           <div class="calendar-header-day">Sat</div>
 
-          <div></div> <div></div> <div class="calendar-day">1</div>
+          <div class="calendar-day event-highlight"><a href="#sigma-studies">1</a></div>
           <div class="calendar-day">2</div>
           <div class="calendar-day">3</div>
           <div class="calendar-day">4</div>
           <div class="calendar-day">5</div>
-          <div class="calendar-day">6</div>
+          <div class="calendar-day event-highlight"><a href="#carnations">6</a></div>
           <div class="calendar-day">7</div>
-          <div class="calendar-day event-highlight">8</div>
-          <div class="calendar-day event-highlight">9</div>
-          <div class="calendar-day event-highlight">10</div>
-          <div class="calendar-day event-highlight">11</div>
-          <div class="calendar-day event-highlight">12</div>
+          <div class="calendar-day event-highlight"><a href="#sigma-studies">8</a></div>
+          <div class="calendar-day">9</div>
+          <div class="calendar-day">10</div>
+          <div class="calendar-day">11</div>
+          <div class="calendar-day">12</div>
           <div class="calendar-day">13</div>
           <div class="calendar-day">14</div>
-          <div class="calendar-day">15</div>
+          <div class="calendar-day event-highlight"><a href="#sigma-studies">15</a></div>
           <div class="calendar-day">16</div>
           <div class="calendar-day">17</div>
           <div class="calendar-day">18</div>
           <div class="calendar-day">19</div>
-          <div class="calendar-day event-highlight">20</div>
-          <div class="calendar-day event-highlight">21</div>
-          <div class="calendar-day">22</div>
+          <div class="calendar-day">20</div>
+          <div class="calendar-day">21</div>
+          <div class="calendar-day event-highlight"><a href="#sigma-studies">22</a></div>
           <div class="calendar-day">23</div>
           <div class="calendar-day">24</div>
           <div class="calendar-day">25</div>
           <div class="calendar-day">26</div>
           <div class="calendar-day">27</div>
-          <div class="calendar-day">28</div>
-          <div class="calendar-day">29</div>
-          <div class="calendar-day">30</div>
+          <div class="calendar-day event-highlight"><a href="#brunch">28</a></div>
         </div>
       </div>
 
       <div class="event-list">
-        <div class="event-item">
-          <strong>April 8–12:</strong> DoubleGood Fundraiser — Popcorn fundraiser supporting scholarships.
-        </div>
-        <div class="event-item">
-          <strong>April 20:</strong> Sigma Studies w/ Sigma Gamma Rho (3–5 PM).
-        </div>
-        <div class="event-item">
-          <strong>April 21:</strong> Miss Blue & White Presentation.
-        </div>
+        <h3>February Events</h3>
+        <div id="sigma-studies" class="event-item"><strong>Feb 1, 8, 15, 22:</strong> Sigma Studies</div>
+        <div id="carnations" class="event-item"><strong>Feb 6:</strong> Carnations & Affirmations</div>
+        <div id="brunch" class="event-item"><strong>Feb 28:</strong> Brunch w/ IT Fundraiser</div>
+
+        <h3>March Events</h3>
+        <div class="event-item"><strong>Mar 1, 8, 29:</strong> Sigma Studies</div>
+        <div class="event-item"><strong>Mar 2:</strong> Aux Battles</div>
+        <div class="event-item"><strong>Mar 3:</strong> Miss Blu & White Event</div>
+        <div class="event-item"><strong>Mar 4:</strong> Drug Event w/ CADRE</div>
+        <div class="event-item"><strong>Mar 5:</strong> Event TBD</div>
+        <div class="event-item"><strong>Mar 6:</strong> Sigma Skate @ Orbit</div>
+        <div class="event-item"><strong>Mar 7:</strong> Service Saturday</div>
+        <div class="event-item"><strong>Mar 12:</strong> Probate (Hold)</div>
+        <div class="event-item"><strong>Mar 27:</strong> Step Show</div>
+
+        <h3>April Events</h3>
+        <div class="event-item"><strong>Apr 1:</strong> Iota Theta Bake Sale</div>
+        <div class="event-item"><strong>Apr 8:</strong> Miss Phi Beta Sigma Pageant</div>
+        <div class="event-item"><strong>Apr 9–12:</strong> Regional Conference</div>
+        <div class="event-item"><strong>Apr 12, 19:</strong> Sigma Studies</div>
       </div>
     </main>
 
     <footer class="footer">
       <p>
-        📸 <a href="https://instagram.com/it_sigmas" target="_blank">@it_sigmas</a> |
-        <a href="https://forms.gle/v5EqHnAfyGm3QXxH8" target="_blank">Interest Form</a>
+        📸 <a href="https://instagram.com/it_sigmas" target="_blank">@it_sigmas</a> | 
+        <a href="mailto:phibetasigma_it@udayton.edu">Contact Us</a>
       </p>
-      <img src="chapter-logo.png" alt="Logo" class="footer-logo" />
+      <img src="chapter-logo.png" alt="Logo" class="footer-logo" width="60" />
     </footer>
-    
+
     <button id="darkToggle" class="floating-toggle">Dark Mode</button>
   </div>
   <script src="scripts.js"></script>
