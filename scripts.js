@@ -92,3 +92,51 @@ document.addEventListener('keydown', (e) => {
     if (e.key === "Escape") lightbox.style.display = "none";
   }
 });
+
+// --- DYNAMIC CALENDAR NAVIGATION ---
+const months = [
+  { id: 'januaryView', name: 'January 2026' },
+  { id: 'februaryView', name: 'February 2026' },
+  { id: 'marchView', name: 'March 2026' },
+  { id: 'aprilView', name: 'April 2026' }
+];
+
+let currentMonthIndex = 1; // Defaults to February since it's Feb 1st
+
+function updateCalendar(index) {
+  // Hide all monthly grids
+  document.querySelectorAll('.calendar-view').forEach(view => view.classList.remove('active'));
+  
+  // Display the selected grid and update the heading
+  const activeView = document.getElementById(months[index].id);
+  if (activeView) {
+    activeView.classList.add('active');
+    document.getElementById('monthDisplay').textContent = months[index].name;
+  }
+}
+
+// Support for Button Clicks
+document.getElementById('prevMonth')?.addEventListener('click', () => {
+  if (currentMonthIndex > 0) {
+    currentMonthIndex--;
+    updateCalendar(currentMonthIndex);
+  }
+});
+
+document.getElementById('nextMonth')?.addEventListener('click', () => {
+  if (currentMonthIndex < months.length - 1) {
+    currentMonthIndex++;
+    updateCalendar(currentMonthIndex);
+  }
+});
+
+// Support for Keyboard Arrow Keys
+document.addEventListener('keydown', (e) => {
+  if (e.key === "ArrowLeft" && currentMonthIndex > 0) {
+    currentMonthIndex--;
+    updateCalendar(currentMonthIndex);
+  } else if (e.key === "ArrowRight" && currentMonthIndex < months.length - 1) {
+    currentMonthIndex++;
+    updateCalendar(currentMonthIndex);
+  }
+});
