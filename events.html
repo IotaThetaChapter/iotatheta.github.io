@@ -6,23 +6,23 @@
   <title>Events | Iota Theta Chapter</title>
   <link rel="stylesheet" href="styles.css" />
   <style>
-    /* Smooth scroll effect for jumping to event IDs */
-    html {
-      scroll-behavior: smooth;
+    html { scroll-behavior: smooth; }
+    .calendar-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 800px;
+      margin: 0 auto 1rem;
     }
-    /* Simple hover effect to show the dates are clickable */
-    .event-highlight:hover {
-      background-color: var(--accent);
-      transform: scale(1.1);
-      transition: 0.2s;
+    .month-arrow {
+      font-size: 2rem;
+      cursor: pointer;
+      color: var(--primary);
+      user-select: none;
     }
-    .calendar-day a {
-      text-decoration: none;
-      color: inherit;
-      display: block;
-      width: 100%;
-      height: 100%;
-    }
+    .month-arrow:hover { color: var(--accent); }
+    .calendar-view { display: none; } /* Hidden by default, JS will show active */
+    .calendar-view.active { display: block; }
   </style>
 </head>
 <body>
@@ -38,78 +38,53 @@
     </nav>
 
     <main>
-      <div class="calendar-container">
-        <h2>February 2026</h2>
-        <div class="calendar-grid">
-          <div class="calendar-header-day">Sun</div>
-          <div class="calendar-header-day">Mon</div>
-          <div class="calendar-header-day">Tue</div>
-          <div class="calendar-header-day">Wed</div>
-          <div class="calendar-header-day">Thu</div>
-          <div class="calendar-header-day">Fri</div>
-          <div class="calendar-header-day">Sat</div>
+      <div class="calendar-nav">
+        <span class="month-arrow" id="prevMonth">&#10094;</span>
+        <h2 id="monthDisplay">February 2026</h2>
+        <span class="month-arrow" id="nextMonth">&#10095;</span>
+      </div>
 
-          <div class="calendar-day event-highlight"><a href="#sigma-studies">1</a></div>
-          <div class="calendar-day">2</div>
-          <div class="calendar-day">3</div>
-          <div class="calendar-day">4</div>
-          <div class="calendar-day">5</div>
-          <div class="calendar-day event-highlight"><a href="#carnations">6</a></div>
-          <div class="calendar-day">7</div>
-          <div class="calendar-day event-highlight"><a href="#sigma-studies">8</a></div>
-          <div class="calendar-day">9</div>
-          <div class="calendar-day">10</div>
-          <div class="calendar-day">11</div>
-          <div class="calendar-day">12</div>
-          <div class="calendar-day">13</div>
-          <div class="calendar-day">14</div>
-          <div class="calendar-day event-highlight"><a href="#sigma-studies">15</a></div>
-          <div class="calendar-day">16</div>
-          <div class="calendar-day">17</div>
-          <div class="calendar-day">18</div>
-          <div class="calendar-day">19</div>
-          <div class="calendar-day">20</div>
-          <div class="calendar-day">21</div>
-          <div class="calendar-day event-highlight"><a href="#sigma-studies">22</a></div>
-          <div class="calendar-day">23</div>
-          <div class="calendar-day">24</div>
-          <div class="calendar-day">25</div>
-          <div class="calendar-day">26</div>
-          <div class="calendar-day">27</div>
-          <div class="calendar-day event-highlight"><a href="#brunch">28</a></div>
+      <div id="januaryView" class="calendar-view">
+        <div class="calendar-grid">
+          <div class="calendar-header-day">Sun</div><div class="calendar-header-day">Mon</div><div class="calendar-header-day">Tue</div><div class="calendar-header-day">Wed</div><div class="calendar-header-day">Thu</div><div class="calendar-header-day">Fri</div><div class="calendar-header-day">Sat</div>
+          <div></div><div></div><div></div><div class="calendar-day">1</div><div class="calendar-day">2</div><div class="calendar-day">3</div><div class="calendar-day">4</div>
+          <div class="calendar-day">5</div><div class="calendar-day">6</div><div class="calendar-day">7</div><div class="calendar-day">8</div><div class="calendar-day">9</div><div class="calendar-day">10</div><div class="calendar-day">11</div>
+          <div class="calendar-day">12</div><div class="calendar-day">13</div><div class="calendar-day">14</div><div class="calendar-day">15</div><div class="calendar-day">16</div><div class="calendar-day">17</div><div class="calendar-day event-highlight"><a href="#sigma-jan-18">18</a></div>
+          <div class="calendar-day">19</div><div class="calendar-day">20</div><div class="calendar-day event-highlight"><a href="#wellness-jan">21</a></div><div class="calendar-day">22</div><div class="calendar-day event-highlight"><a href="#info-jan">23</a></div><div class="calendar-day">24</div><div class="calendar-day event-highlight"><a href="#sigma-jan-25">25</a></div>
+          <div class="calendar-day">26</div><div class="calendar-day">27</div><div class="calendar-day">28</div><div class="calendar-day">29</div><div class="calendar-day event-highlight"><a href="#miss-jan">30</a></div><div class="calendar-day">31</div>
+        </div>
+      </div>
+
+      <div id="februaryView" class="calendar-view active">
+        <div class="calendar-grid">
+          <div class="calendar-header-day">Sun</div><div class="calendar-header-day">Mon</div><div class="calendar-header-day">Tue</div><div class="calendar-header-day">Wed</div><div class="calendar-header-day">Thu</div><div class="calendar-header-day">Fri</div><div class="calendar-header-day">Sat</div>
+          <div class="calendar-day event-highlight"><a href="#sigma-feb-1">1</a></div><div class="calendar-day">2</div><div class="calendar-day">3</div><div class="calendar-day">4</div><div class="calendar-day">5</div><div class="calendar-day event-highlight"><a href="#carnations">6</a></div><div class="calendar-day">7</div>
+          <div class="calendar-day event-highlight"><a href="#sigma-feb-8">8</a></div><div class="calendar-day">9</div><div class="calendar-day">10</div><div class="calendar-day">11</div><div class="calendar-day">12</div><div class="calendar-day">13</div><div class="calendar-day">14</div>
+          <div class="calendar-day event-highlight"><a href="#sigma-feb-15">15</a></div><div class="calendar-day">16</div><div class="calendar-day">17</div><div class="calendar-day">18</div><div class="calendar-day">19</div><div class="calendar-day">20</div><div class="calendar-day">21</div>
+          <div class="calendar-day event-highlight"><a href="#sigma-feb-22">22</a></div><div class="calendar-day">23</div><div class="calendar-day">24</div><div class="calendar-day">25</div><div class="calendar-day">26</div><div class="calendar-day">27</div><div class="calendar-day event-highlight"><a href="#brunch">28</a></div>
         </div>
       </div>
 
       <div class="event-list">
+        <h3>January Events</h3>
+        <div id="sigma-jan-18" class="event-item"><strong>January 18:</strong> Sigma Studies @ Roesch Library (3:00 PM)</div>
+        <div id="wellness-jan" class="event-item"><strong>January 21:</strong> Wellness Wednesday w/ Sigma Gamma Rho</div>
+        <div id="info-jan" class="event-item"><strong>January 23:</strong> Iota Theta Informational</div>
+        <div id="sigma-jan-25" class="event-item"><strong>January 25:</strong> Sigma Studies @ Roesch Library (3:00 PM)</div>
+        <div id="miss-jan" class="event-item"><strong>January 30:</strong> Miss Phi Beta Sigma Informational</div>
+
         <h3>February Events</h3>
-        <div id="sigma-studies" class="event-item"><strong>Feb 1, 8, 15, 22:</strong> Sigma Studies</div>
-        <div id="carnations" class="event-item"><strong>Feb 6:</strong> Carnations & Affirmations</div>
-        <div id="brunch" class="event-item"><strong>Feb 28:</strong> Brunch w/ IT Fundraiser</div>
-
-        <h3>March Events</h3>
-        <div class="event-item"><strong>Mar 1, 8, 29:</strong> Sigma Studies</div>
-        <div class="event-item"><strong>Mar 2:</strong> Aux Battles</div>
-        <div class="event-item"><strong>Mar 3:</strong> Miss Blu & White Event</div>
-        <div class="event-item"><strong>Mar 4:</strong> Drug Event w/ CADRE</div>
-        <div class="event-item"><strong>Mar 5:</strong> Event TBD</div>
-        <div class="event-item"><strong>Mar 6:</strong> Sigma Skate @ Orbit</div>
-        <div class="event-item"><strong>Mar 7:</strong> Service Saturday</div>
-        <div class="event-item"><strong>Mar 12:</strong> Probate (Hold)</div>
-        <div class="event-item"><strong>Mar 27:</strong> Step Show</div>
-
-        <h3>April Events</h3>
-        <div class="event-item"><strong>Apr 1:</strong> Iota Theta Bake Sale</div>
-        <div class="event-item"><strong>Apr 8:</strong> Miss Phi Beta Sigma Pageant</div>
-        <div class="event-item"><strong>Apr 9–12:</strong> Regional Conference</div>
-        <div class="event-item"><strong>Apr 12, 19:</strong> Sigma Studies</div>
+        <div id="sigma-feb-1" class="event-item"><strong>February 1:</strong> Sigma Studies @ Roesch Library (3:00 PM)</div>
+        <div id="carnations" class="event-item"><strong>February 6:</strong> Carnations & Affirmations @ KU</div>
+        <div id="sigma-feb-8" class="event-item"><strong>February 8:</strong> Sigma Studies @ Roesch Library (3:00 PM)</div>
+        <div id="sigma-feb-15" class="event-item"><strong>February 15:</strong> Sigma Studies @ Roesch Library (3:00 PM)</div>
+        <div id="sigma-feb-22" class="event-item"><strong>February 22:</strong> Sigma Studies @ Roesch Library (3:00 PM)</div>
+        <div id="brunch" class="event-item"><strong>February 28:</strong> Brunch w/ Iota Theta Fundraiser</div>
       </div>
     </main>
 
     <footer class="footer">
-      <p>
-        📸 <a href="https://instagram.com/it_sigmas" target="_blank">@it_sigmas</a> | 
-        <a href="mailto:phibetasigma_it@udayton.edu">Contact Us</a>
-      </p>
+      <p>📸 <a href="https://instagram.com/it_sigmas" target="_blank">@it_sigmas</a> | <a href="mailto:phibetasigma_it@udayton.edu">Contact Us</a></p>
       <img src="chapter-logo.png" alt="Logo" class="footer-logo" width="60" />
     </footer>
 
